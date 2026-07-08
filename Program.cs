@@ -1,8 +1,8 @@
 ﻿using TorneoPOO_EMANOSALVAS.Models;
 
-Jugador objJugador1 = new Jugador("Piero Hincapié", 25, 4, "Defensa");
+Jugador objJugador1 = new Jugador("Piero Hincapié", 24, 4, "Defensa");
 
-Jugador objJugador2 = new Jugador("Enner Valencia",32,7, "Delantero");
+Jugador objJugador2 = new Jugador("Enner Valencia",32,700, "Delantero");
 
 Equipo objEquipo1= new Equipo("Emelec","Guayaquil");
 
