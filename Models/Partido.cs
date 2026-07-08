@@ -13,13 +13,12 @@ namespace TorneoPOO_EMANOSALVAS.Models
         public DateTime Fecha { get; set; }
         public string Lugar { get; set; }
 
-        public void Programar(Equipo local, Equipo visitante, DateTime fecha, string lugar)
+        public Partido( Equipo local, Equipo visitante, DateTime fecha, string lugar)
         {
             this.Local = local;
             this.Visitante = visitante;
             this.Fecha = fecha;
             this.Lugar = lugar;
-            Console.WriteLine("Partido programado correctamente");
         }
 
         public void MostrarResumen()
