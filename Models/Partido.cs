@@ -28,9 +28,6 @@ namespace TorneoPOO_EMANOSALVAS.Models
         }
 
 
-        //Acciones: programar, mostrar resumen.
-
-
 
     }
 }
