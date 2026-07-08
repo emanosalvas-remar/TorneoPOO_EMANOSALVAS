@@ -27,9 +27,6 @@ namespace TorneoPOO_EMANOSALVAS.Models
 
 
 
-
-
-
         //METODOS, COMPORTAMIENTOS O FUNCIONES
         public void Presentar()
         {
