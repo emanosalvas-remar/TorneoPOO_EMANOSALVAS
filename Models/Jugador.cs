@@ -36,7 +36,7 @@ namespace TorneoPOO_EMANOSALVAS.Models
             get => numero;
             set
             {
-                if (!EsNumeroValido(numero))
+                if (!EsNumeroValido(value))
                 {
                     throw new Exception("El número de la camiseta no es válido");
                 }
