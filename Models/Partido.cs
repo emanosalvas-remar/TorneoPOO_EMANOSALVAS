@@ -8,6 +8,7 @@ namespace TorneoPOO_EMANOSALVAS.Models
 {
     public class Partido
     {
+        private int id; //IDENTIFICADOR UNICO DEL PARTIDO OJOOOOOOOOOOOOO
         private Equipo local;
         private Equipo visitante;
         private DateTime fecha;
@@ -33,7 +34,7 @@ namespace TorneoPOO_EMANOSALVAS.Models
             Console.WriteLine($"Hay un partido programado entre el local {this.Local.Nombre} y el visitante {this.Visitante.Nombre} en el lugar {this.Lugar}");
         }
 
-
+        //AÑADIR IMPRIMIR PARTIDO
 
     }
 }

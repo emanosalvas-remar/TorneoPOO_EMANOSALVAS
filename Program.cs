@@ -4,7 +4,11 @@ using TorneoPOO_EMANOSALVAS.Models;
 
 int opcion = 0;
 Jugador objJug1 = new Jugador("Eduardo", 20, 10, "Delantero", "Quito", "1234567890", 50000);
+Jugador objJug2 = new Jugador("Pedro", 30, 11, "Defensa", "Loja", "0123456789", 40000);
+Jugador objJug3 = new Jugador("Juan", 50, 12, "Arquero", "Guayaquil", "0926826504", 30000);
 Database.Jugadores.Add(objJug1);
+Database.Jugadores.Add(objJug2);
+Database.Jugadores.Add(objJug3);
 do
 {
     Console.Clear();
@@ -16,8 +20,16 @@ do
     Console.WriteLine("4.- Actualizar Jugador");
     Console.WriteLine("5.- Eliminar Jugador");
     Console.WriteLine("6.- Crear Equipos");
-    Console.WriteLine("7.- Crear Partidos");
-    Console.WriteLine("8.- Salir");
+    Console.WriteLine("7.- Listar Equipos");
+    Console.WriteLine("8.- Buscar Equipo");
+    Console.WriteLine("9.- Actualizar Equipos");//********************
+    Console.WriteLine("10.- Eliminar Equipos");//********************
+    Console.WriteLine("11.- Crear Partidos");//********************
+    Console.WriteLine("12.- Listar Partidos");//********************
+    Console.WriteLine("13.- Buscar Partido");//********************
+    Console.WriteLine("14.- Actualizar Partido");//********************
+    Console.WriteLine("15.- Eliminar Partido");//********************
+    Console.WriteLine("16.- Salir");
     Console.WriteLine("");
     Console.Write("Ingrese una opción: ");
     opcion = Convert.ToInt32(Console.ReadLine());
@@ -44,9 +56,18 @@ do
             crearEquipo();
             break;
         case 7:
-            crearPartido();
+            listarEquipos();
             break;
         case 8:
+            buscarEquipo();
+            break;
+        case 9:
+            actualizarEquipo();
+            break;
+        case 10:
+            crearPartido();
+            break;
+        case 11:
             Console.WriteLine("Saliendo del programa...");
             break;
         default:
@@ -54,7 +75,60 @@ do
             break;
     }
 
-} while (opcion != 8);
+} while (opcion != 11);
+
+void buscarEquipo()
+{
+    Console.Clear();
+    Console.WriteLine("**********Buscar Equipo**********");
+    Console.WriteLine("Ingrese el nombre del equipo a buscar: ");
+    string nombre_ingresado = Console.ReadLine();
+    Equipo objEquipo = Database.Equipos.Find(j => j.Nombre.ToUpper() == nombre_ingresado.ToUpper());
+    if (objEquipo != null)
+    {
+        Console.WriteLine("Equipo encontrado:");
+        Console.WriteLine("-----------------------------------");
+        objEquipo.Imprimir();
+    }
+    else
+    {
+        Console.WriteLine("Equipo no encontrado.");
+    }
+    Console.ReadLine();
+}
+
+void listarEquipos()
+{
+    Console.Clear();
+    Console.WriteLine("**********Equipos Creados**********");
+    foreach (Equipo equipo in Database.Equipos)
+    {
+        equipo.Imprimir();
+        Console.WriteLine("-----------------------------------");
+    }
+    Console.ReadLine();
+}
+
+void actualizarEquipo()
+{
+
+    Console.Clear();
+    Console.WriteLine("**********Actualizar Equipo**********");
+    Console.WriteLine("Ingrese la cédula del equipo a actualizar: ");
+    string nombre_ingresado = Console.ReadLine();
+    Equipo objEquipo= Database.Equipos.Find(j => j.Nombre.ToUpper() == nombre_ingresado.ToUpper());
+    if (objEquipo != null)
+    {
+
+
+       
+    }
+    else
+    {
+        Console.WriteLine("Equpo no encontrado.");
+    }
+    Console.ReadLine();
+}
 
 void EliminarJugador()
 {
@@ -160,6 +234,41 @@ void crearPartido()
 void crearEquipo()
 {
     Console.Clear();
+    Console.WriteLine("**********Crear Equipo**********");
+    Console.WriteLine("Ingrese el nombre del equipo: ");
+    string nombre = Console.ReadLine();
+    Console.WriteLine("Ingrese la ciudad del equipo: ");
+    string ciudad = Console.ReadLine();
+    Console.WriteLine("Ingrese el color del equipo: ");
+    string color = Console.ReadLine();
+
+    Equipo objEquipo = new Equipo(nombre, ciudad, color);
+    Console.WriteLine("Equipo creado exitosamente.");
+    string respuesta = "";
+    do
+    {
+        Console.WriteLine("¿Desea Ingresar Jugadores? S/N");
+        respuesta = Console.ReadLine();
+        if (respuesta.ToUpper() == "S")
+        {
+            Console.WriteLine("Ingrese la cédula del jugador a fichar");
+            string cedulaIngresada = Console.ReadLine();
+            Jugador objJugador = Database.Jugadores.Find(x => x.Cedula == cedulaIngresada);
+            if (objJugador != null)
+            {
+                objEquipo.AgregarJugador(objJugador);
+                objJugador.Fichar(objEquipo);
+            }
+            else
+            {
+                Console.WriteLine("Jugador no encontrado.");
+            }
+        }
+
+    } while (respuesta == "S");
+    Database.Equipos.Add(objEquipo);
+    Console.ReadLine();
+
 }
 
 void crearJugador()

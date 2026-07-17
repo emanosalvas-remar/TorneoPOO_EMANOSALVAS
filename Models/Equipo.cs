@@ -11,8 +11,8 @@ namespace TorneoPOO_EMANOSALVAS.Models
     {
         private string nombre;
         private string ciudad;
-        private List<Jugador> jugadores;
         private string color;
+        private List<Jugador> jugadores;
         public string Nombre { get => nombre; set => nombre = value; }
         public string Ciudad { get => ciudad; set => ciudad = value; }
         public List<Jugador> Jugadores { get => jugadores; set => jugadores = value; }
@@ -38,8 +38,17 @@ namespace TorneoPOO_EMANOSALVAS.Models
             Console.WriteLine($"La lista de jugadores del equipo {this.Nombre} de la ciudad de {this.Ciudad} es:");
             foreach(Jugador objJugador in Jugadores)
             {
-                objJugador.Presentar();
+                objJugador.Imprimir();
+                Console.WriteLine("-----------------------------------");
             }
+        }
+
+        public void Imprimir()
+        {
+            Console.WriteLine($"Nombre del equipo: {this.Nombre}");
+            Console.WriteLine($"Ciudad del equipo: {this.Ciudad}");
+            Console.WriteLine($"Color del equipo: {this.Color}");
+            ListarPlantilla();
         }
     }
 }
