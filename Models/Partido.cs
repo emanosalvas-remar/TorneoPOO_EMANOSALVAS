@@ -19,7 +19,9 @@ namespace TorneoPOO_EMANOSALVAS.Models
         public DateTime Fecha { get => fecha; set => fecha = value; }
         public string Lugar { get => lugar; set => lugar = value; }
 
-        public Partido( Equipo local, Equipo visitante, DateTime fecha, string lugar)
+        public int Id { get => id; set => id = value; }
+
+        public Partido(Equipo local, Equipo visitante, DateTime fecha, string lugar)
         {
             this.Local = local;
             this.Visitante = visitante;
@@ -27,11 +29,19 @@ namespace TorneoPOO_EMANOSALVAS.Models
             this.Lugar = lugar;
         }
 
-       
+
 
         public void MostrarResumen()
         {
             Console.WriteLine($"Hay un partido programado entre el local {this.Local.Nombre} y el visitante {this.Visitante.Nombre} en el lugar {this.Lugar}");
+        }
+        public void Imprimir()
+        {
+            Console.WriteLine($"Id del partido: {this.Id}");
+            Console.WriteLine($"Local: {this.Local.Nombre}");
+            Console.WriteLine($"Visitante: {this.Visitante.Nombre}");
+            Console.WriteLine($"Fecha: {this.Fecha.ToString("dd/MM/yyyy")}");
+            Console.WriteLine($"Lugar: {this.Lugar}");
         }
 
         //AÑADIR IMPRIMIR PARTIDO

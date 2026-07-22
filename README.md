@@ -20,3 +20,6 @@ Comportamientos de las clases
 	CRUD de jugador
 	CRUD de Equipo
 	Se envía tarea de culminar las funciones restantes (9 a la 15)
+
+2026-07-21
+	Inicio de archivos, serializador Json

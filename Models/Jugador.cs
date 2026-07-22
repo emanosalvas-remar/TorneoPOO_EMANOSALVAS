@@ -19,6 +19,8 @@ namespace TorneoPOO_EMANOSALVAS.Models
         private decimal sueldo;
         private string fichado;
         private Equipo equipo_actual;
+        private int id;
+
         public string Nombre { get => nombre; set => nombre = value; }
         public int Edad
         {
@@ -72,6 +74,10 @@ namespace TorneoPOO_EMANOSALVAS.Models
         }
 
         public string Fichado { get => fichado; }
+        
+        public int Id { get => id; set => id = value; }
+
+
         //Constructor
         public Jugador(string nombre, int edad, int numero, string posicion, string lugarNacimiento, string cedula, decimal sueldo)
         {
@@ -85,6 +91,9 @@ namespace TorneoPOO_EMANOSALVAS.Models
             this.fichado = "N";
             this.equipo_actual = null;
         }
+
+
+
 
 
 
@@ -120,7 +129,8 @@ namespace TorneoPOO_EMANOSALVAS.Models
 
         public void Imprimir()
         {
-            Console.WriteLine($"Cédula: {this.Cedula}"); 
+            Console.WriteLine($"Id: {this.Id}");
+            Console.WriteLine($"Cédula: {this.Cedula}");
             Console.WriteLine($"Nombre: {this.Nombre}");
             Console.WriteLine($"Edad: {this.Edad}");
             Console.WriteLine($"Lugar de Nacimiento: {this.LugarNacimiento}");

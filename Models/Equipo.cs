@@ -13,10 +13,12 @@ namespace TorneoPOO_EMANOSALVAS.Models
         private string ciudad;
         private string color;
         private List<Jugador> jugadores;
+        private int id;
         public string Nombre { get => nombre; set => nombre = value; }
         public string Ciudad { get => ciudad; set => ciudad = value; }
         public List<Jugador> Jugadores { get => jugadores; set => jugadores = value; }
         public string Color { get => color; set => color = value; }
+        public int Id { get => id; set => id = value; }
 
         public Equipo(string nombre, string ciudad, string color)
         {
@@ -45,6 +47,8 @@ namespace TorneoPOO_EMANOSALVAS.Models
 
         public void Imprimir()
         {
+
+            Console.WriteLine($"Id: {this.Id}");
             Console.WriteLine($"Nombre del equipo: {this.Nombre}");
             Console.WriteLine($"Ciudad del equipo: {this.Ciudad}");
             Console.WriteLine($"Color del equipo: {this.Color}");
