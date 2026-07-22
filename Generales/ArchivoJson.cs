@@ -27,6 +27,10 @@ namespace TorneoPOO_EMANOSALVAS.Generales
 
         public static void Guardar<T>(string rutaArchivo, List<T> lista)
         {
+            if(!Directory.Exists(Path.GetDirectoryName(rutaArchivo)))
+            {
+                Directory.CreateDirectory(Path.GetDirectoryName(rutaArchivo));
+            }
             string contenido = JsonSerializer.Serialize(lista, Opciones);
             File.WriteAllText(rutaArchivo, contenido);
         }

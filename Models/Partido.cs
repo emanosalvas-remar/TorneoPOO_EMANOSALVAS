@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TorneoPOO_EMANOSALVAS.Generales;
 
 namespace TorneoPOO_EMANOSALVAS.Models
 {
@@ -27,6 +28,14 @@ namespace TorneoPOO_EMANOSALVAS.Models
             this.Visitante = visitante;
             this.Fecha = fecha;
             this.Lugar = lugar;
+            if (Database.Partidos.Count == 0)
+            {
+                this.id = 1;
+            }
+            else
+            {
+                this.id = Database.Partidos.Max(x => x.id) + 1;
+            }
         }
 
 

@@ -4,6 +4,7 @@ using System.ComponentModel.Design;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TorneoPOO_EMANOSALVAS.Generales;
 
 namespace TorneoPOO_EMANOSALVAS.Models
 {
@@ -71,6 +72,10 @@ namespace TorneoPOO_EMANOSALVAS.Models
                 }
                 sueldo = value;
             }
+            get 
+            {
+                return sueldo;
+            }
         }
 
         public string Fichado { get => fichado; }
@@ -90,6 +95,14 @@ namespace TorneoPOO_EMANOSALVAS.Models
             this.Sueldo = sueldo;
             this.fichado = "N";
             this.equipo_actual = null;
+            if (Database.Jugadores.Count == 0)
+            {
+                this.id = 1;
+            }
+            else
+            {
+                this.id = Database.Jugadores.Max(x => x.id) + 1;
+            }
         }
 
 

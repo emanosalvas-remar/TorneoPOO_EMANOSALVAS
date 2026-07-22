@@ -4,6 +4,7 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TorneoPOO_EMANOSALVAS.Generales;
 
 namespace TorneoPOO_EMANOSALVAS.Models
 {
@@ -26,6 +27,14 @@ namespace TorneoPOO_EMANOSALVAS.Models
             this.Ciudad = ciudad;
             this.Jugadores = new List<Jugador>();
             this.color = color;
+            if (Database.Equipos.Count == 0)
+            {
+                this.id = 1;
+            }
+            else
+            {
+                this.id = Database.Equipos.Max(x => x.id) + 1;
+            }
         }
 
 
