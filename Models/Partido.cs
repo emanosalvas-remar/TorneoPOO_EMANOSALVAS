@@ -13,7 +13,7 @@ namespace TorneoPOO_EMANOSALVAS.Models
         private Equipo local;
         private Equipo visitante;
         private DateTime fecha;
-        private string lugar;
+        private string? lugar;
 
         private int? localId { get; set; }
         private int? visitanteId { get; set; }
@@ -34,6 +34,11 @@ namespace TorneoPOO_EMANOSALVAS.Models
             this.Visitante = visitante;
             this.Fecha = fecha;
             this.Lugar = lugar;
+        }
+
+        public Partido()
+        {
+
         }
 
 

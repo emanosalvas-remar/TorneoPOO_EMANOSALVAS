@@ -83,7 +83,7 @@ namespace TorneoPOO_EMANOSALVAS.Models
 
         public int Id { get => id; set => id = value; }
 
-        public int EquipoId { get => equipoId ?? 0; set => equipoId = value; }
+        public int? EquipoId { get => equipoId; set => equipoId = value; }
         public Equipo? EquipoActual { get => equipo_actual; set => equipo_actual = value; }
 
 
@@ -98,7 +98,9 @@ namespace TorneoPOO_EMANOSALVAS.Models
             this.Cedula = cedula;
             this.Sueldo = sueldo;
             this.fichado = "N";
-            this.equipo_actual = null;
+            this.EquipoActual = null;
+            this.EquipoId=null;
+
         }
 
         public Jugador()

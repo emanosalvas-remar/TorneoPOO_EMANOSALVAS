@@ -14,6 +14,9 @@ namespace TorneoPOO_EMANOSALVAS.Generales
         private static readonly string rutaArchivoEquipos = Path.Combine(rutaCarpeta, "equipos.json");
         private static readonly string rutaArchivoPartidos = Path.Combine(rutaCarpeta, "partidos.json");
 
+
+
+
         public static List<Jugador> Jugadores { get; set; } = new List<Jugador>();
         public static List<Equipo> Equipos { get; set; } = new List<Equipo>();  
         public static List<Partido> Partidos { get; set; } = new List<Partido>();

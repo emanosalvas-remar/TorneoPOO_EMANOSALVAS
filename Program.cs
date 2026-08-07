@@ -1,8 +1,8 @@
-﻿using TorneoPOO_EMANOSALVAS.Generales;
+﻿using TorneoPOO_EMANOSALVAS.Datos;
+using TorneoPOO_EMANOSALVAS.Generales;
 using TorneoPOO_EMANOSALVAS.Models;
 
 
-Database.CargarDatos();
 int opcion = 0;
 do
 {
@@ -131,7 +131,8 @@ void EliminarJugador()
     Console.WriteLine("**********Elimar Jugador**********");
     Console.WriteLine("Ingrese la cédula del jugador a eliminar: ");
     string cedulaIngresada = Console.ReadLine();
-    Jugador objJugador = Database.Jugadores.Find(j => j.Cedula == cedulaIngresada);
+    var contex = new TorneoDbContext();
+    Jugador objJugador = contex.Jugadores.Where(j => j.Cedula == cedulaIngresada).FirstOrDefault();
     if (objJugador != null)
     {
         Console.WriteLine("-----------------------------------");
@@ -140,8 +141,8 @@ void EliminarJugador()
         Console.WriteLine($"¿Está seguro de que desea eliminar al jugador {objJugador.Nombre} ? S/N:");
         if(Console.ReadLine().ToUpper() == "S")
         {
-            Database.Jugadores.Remove(objJugador);
-            Database.GuardarJugadores();
+            contex.Jugadores.Remove(objJugador);
+            contex.SaveChanges();
             Console.WriteLine("Jugador eliminado exitosamente.");
         }
         else
@@ -162,7 +163,8 @@ void ActualizarJugador()
     Console.WriteLine("**********Actualizar Jugador**********");
     Console.WriteLine("Ingrese la cédula del jugador a actualizar: ");
     string cedulaIngresada = Console.ReadLine();
-    Jugador objJugador = Database.Jugadores.Find(j => j.Cedula == cedulaIngresada);
+    var contex = new TorneoDbContext();
+    Jugador objJugador = contex.Jugadores.Where(j => j.Cedula == cedulaIngresada).FirstOrDefault();
     if (objJugador != null)
     {
         Console.WriteLine("Jugador encontrado:");
@@ -181,7 +183,7 @@ void ActualizarJugador()
         objJugador.LugarNacimiento = Console.ReadLine();
         Console.WriteLine("Ingrese el nuevo sueldo del jugador: ");
         objJugador.Sueldo = Convert.ToDecimal(Console.ReadLine());
-        Database.GuardarJugadores(); 
+        contex.SaveChanges();
         Console.WriteLine("Jugador actualizado exitosamente.");
         
     }
@@ -198,7 +200,8 @@ void BuscarJugador()
     Console.WriteLine("**********Buscar Jugador**********");
     Console.WriteLine("Ingrese la cédula del jugador a buscar: ");
     string cedulaIngresada = Console.ReadLine();
-    Jugador objJugador = Database.Jugadores.Find(j => j.Cedula == cedulaIngresada);
+    var contex = new TorneoDbContext();
+    Jugador objJugador = contex.Jugadores.Where(j => j.Cedula == cedulaIngresada).FirstOrDefault();
     if (objJugador != null)
     {
         Console.WriteLine("Jugador encontrado:");
@@ -216,7 +219,8 @@ void listarJugadores()
 {
     Console.Clear();
     Console.WriteLine("**********Jugadores Creados**********");
-    foreach (Jugador jugador in Database.Jugadores)
+    var contex = new TorneoDbContext();
+    foreach (Jugador jugador in contex.Jugadores)
     {
         jugador.Imprimir();
         Console.WriteLine("-----------------------------------");
@@ -289,8 +293,15 @@ void crearJugador()
     decimal sueldo = Convert.ToDecimal(Console.ReadLine());
 
     Jugador objJugador = new Jugador(nombre, edad, numero, posicion, lugarNacimiento, cedula, sueldo);
-    Database.Jugadores.Add(objJugador);
-    Database.GuardarJugadores();
+    
+    using (var context = new TorneoDbContext())
+    {
+        context.Jugadores.Add(objJugador);
+        context.SaveChanges();
+    }
+
+    //Database.Jugadores.Add(objJugador);
+    //Database.GuardarJugadores();
     Console.WriteLine("Jugador creado exitosamente.");
     Console.ReadLine();
 }
