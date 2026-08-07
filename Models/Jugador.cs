@@ -19,8 +19,9 @@ namespace TorneoPOO_EMANOSALVAS.Models
         private string cedula;
         private decimal sueldo;
         private string fichado;
-        private Equipo equipo_actual;
+        private Equipo? equipo_actual;
         private int id;
+        private int? equipoId { get; set; }
 
         public string Nombre { get => nombre; set => nombre = value; }
         public int Edad
@@ -50,9 +51,9 @@ namespace TorneoPOO_EMANOSALVAS.Models
         }
         public string Posicion { get => posicion; set => posicion = value; }
         public string LugarNacimiento { get => lugarNacimiento; set => lugarNacimiento = value; }
-        public string Cedula 
-        { 
-            get => cedula; 
+        public string Cedula
+        {
+            get => cedula;
             set
             {
                 if (value.Length != 10)
@@ -72,15 +73,18 @@ namespace TorneoPOO_EMANOSALVAS.Models
                 }
                 sueldo = value;
             }
-            get 
+            get
             {
                 return sueldo;
             }
         }
 
         public string Fichado { get => fichado; }
-        
+
         public int Id { get => id; set => id = value; }
+
+        public int EquipoId { get => equipoId ?? 0; set => equipoId = value; }
+        public Equipo? EquipoActual { get => equipo_actual; set => equipo_actual = value; }
 
 
         //Constructor
@@ -95,18 +99,13 @@ namespace TorneoPOO_EMANOSALVAS.Models
             this.Sueldo = sueldo;
             this.fichado = "N";
             this.equipo_actual = null;
-            if (Database.Jugadores.Count == 0)
-            {
-                this.id = 1;
-            }
-            else
-            {
-                this.id = Database.Jugadores.Max(x => x.id) + 1;
-            }
         }
 
-
-
+        public Jugador()
+        {
+            this.fichado = "N";
+            this.equipo_actual = null;
+        }
 
 
 
